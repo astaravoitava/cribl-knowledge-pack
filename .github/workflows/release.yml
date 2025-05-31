@@ -20,10 +20,9 @@ jobs:
 
       - name: Upload pack to Packs Dispensary
         run: |
-          curl --location 'https://packs-staging.cribl.io/integration/api/v1/packs' \
+          curl --location 'https://packs-staging.cribl.io/extapi/v1/packs' \
             --header 'Authorization: Bearer ${{ secrets.PACKS_API_TOKEN }}' \
             --form "file=@/tmp/${{ github.event.repository.name }}-${{ env.GITHUB_SHA_SHORT }}-${{ env.GITHUB_REF_SLUG_CS }}.crbl" \
-            --form "fileName=\"${{ github.event.repository.name }}-${{ env.GITHUB_SHA_SHORT }}-${{ env.GITHUB_REF_SLUG_CS }}.crbl\""
 
       - name: Release
         if: ${{ success() }}
